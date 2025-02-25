@@ -7,7 +7,7 @@
     <meta name="Keywords" content="爱心代码，程序员表白">
     <meta name="Description" content="爱心代码，HTML文件，何书悦GitHub爱心代码项目">
     <!--     https://github.com/heshuyue/love-code -->
-    <title>I love you</title>
+    <title>小敏，要天天开心啊</title>
     <style type="text/css">
         body {
             margin: 0;
@@ -125,6 +125,24 @@
             font-size: 46px;
             color: #ea80b0;
         }
+
+        .main-text {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 60px;
+            color: #ff69b4;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            font-family: "微软雅黑";
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 10px #ff69b4; }
+            50% { text-shadow: 0 0 20px #ff69b4, 0 0 30px #ff1493; }
+        }
     </style>
 </head>
 
@@ -203,16 +221,31 @@
         Heart.prototype.draw = function (i) {
             ctx.globalAlpha = this.opacity;
             ctx.font = `${180 * this.scale}px "微软雅黑"`;
-            // ctx.font="20px";
             ctx.fillStyle = colors[i % 18];
+            
+            // 定义多个句子数组
+            const sentences = [
+                "希望小敏少点忧愁",
+                "记住我在你身边",
+                "晴天",
+                "小敏天天开心",
+                "有我呢",
+                "你要天天好心情喏",
+                "没有烦脑",
+                "白天有说有笑,晚上睡个好觉",
+                "我想和你赏最美的风景",
+                "看最长的电影"
+            ];
+            
+            // 根据索引 i 循环显示不同的句子
+            const text = sentences[i % sentences.length];
             ctx.fillText(
-                "花无缺，我喜欢你",
+                text,
                 this.x - this.width * 0.5,
                 this.y - this.height * 0.5,
                 this.width,
                 this.height
             );
-
         };
 
         function render() {
